@@ -31,33 +31,28 @@ public class ConsolaLogin {
      */
     private void mostrarOpciones() {
         System.out.println("=== INICIO DE SESIÓN ===");
-        System.out.println("1. Iniciar Sesión.\n 2. Salir.\n");
+        System.out.println("1. Iniciar Sesión.\n2. Salir.\n");
         // TODO: Mostrar "1. Iniciar sesión", "2. Salir"
     }
 
     /**
      * Analiza la entrada proporcionada por el usuario.
-     * @return
+     * @return opción elegida.
      */
     private static int obtenerOpcion() {
-        ArrayList<Integer> validOp = new ArrayList<Integer>();
-        for (int i = 0; i < 3; i++) {
-            validOp.add(i);
-        }
-        Scanner entrada = new Scanner(System.in);
         while (true) {
-            boolean isInt = scanner.hasNextInt();
-            if (isInt) {
+            System.out.println("Ingrese una opción: ");
+            if (scanner.hasNextInt()) {
                 int opcion = scanner.nextInt();
-                if (validOp.contains(opcion)) {
+                if (opcion == 1 || opcion == 2) {
                     return opcion;
                 } else {
-                    System.out.println("Ingrese un valor entre 1 y 2.");
+                    System.out.println("Ingrese 1 ó 2.");
                 }
             } else {
-                System.out.println("Ingrese un valor entero.");
+                System.out.println("Entrada no válida.");
+                scanner.next();
             }
-            scanner.nextLine();
         }
     }
 
@@ -79,7 +74,25 @@ public class ConsolaLogin {
      * Solicita usuario y contraseña, y muestra el resultado.
      */
     private void manejarLogin() {
-        System.out.println("Prueba de funcionamiento");
+        int intentos = 3;
+        scanner.nextLine();
+
+        while (intentos > 0) {
+            System.out.println("Usuario: ");
+            String usuario = scanner.nextLine();
+
+            System.out.println("Clave: ");
+            String clave = scanner.nextLine();
+
+            if (login.autenticar(usuario, clave, datos)) {
+                System.out.println("Inicio de sesión exitoso.");
+                return;
+            } else {
+                intentos--;
+                System.out.println("Credenciales incorrectas. Intentos restantes: " + intentos);
+            }
+        }
+        System.out.println("Demasiados intentos fallidos. Volviendo a inicio...\n");
         // TODO: Pedir usuario y contraseña por consola
         // TODO: Llamar a login.autenticar() y mostrar mensaje según resultado
     }
