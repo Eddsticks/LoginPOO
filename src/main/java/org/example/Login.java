@@ -15,9 +15,13 @@ public class Login {
      */
     public boolean autenticar(String usuario, String clave, DatosLogin datos) {
         String intento = usuario + ";" + clave;
-        for (String credencial : datos.)
+        for (String credencial : datos.getCredenciales()) {
+            if (credencial.equals(intento)) {
+                return true;
+            }
+        }
+        return false;
         // TODO: Crear String intento = usuario + ";" + clave
         // TODO: Recorrer datos.credenciales y comparar con intento
-        return false;
     }
 }
