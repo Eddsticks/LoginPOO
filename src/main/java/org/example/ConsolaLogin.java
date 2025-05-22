@@ -31,7 +31,7 @@ public class ConsolaLogin {
      */
     private void mostrarOpciones() {
         System.out.println("=== INICIO DE SESIÓN ===");
-        System.out.println("1. Iniciar Sesión.\n 2. Salir.\n");
+        System.out.println("1. Iniciar Sesión.\n2. Salir.\n");
         // TODO: Mostrar "1. Iniciar sesión", "2. Salir"
     }
 
