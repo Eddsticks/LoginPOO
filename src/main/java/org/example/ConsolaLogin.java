@@ -79,7 +79,18 @@ public class ConsolaLogin {
      * Solicita usuario y contraseña, y muestra el resultado.
      */
     private void manejarLogin() {
-        System.out.println("Prueba de funcionamiento");
+        System.out.println("Ingresar Usuario: ");
+        String usuario = scanner.next();
+
+        System.out.println("Ingresar Contraseña: ");
+        String contrasena = scanner.next();
+
+        if (login.autenticar(usuario, contrasena)) {
+            System.out.println("Inicio de sesión realizado con éxito.");
+            return;
+        } else {
+            System.out.println("Credenciales incorrectas.");
+        }
         // TODO: Pedir usuario y contraseña por consola
         // TODO: Llamar a login.autenticar() y mostrar mensaje según resultado
     }
